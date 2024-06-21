@@ -13,24 +13,25 @@ const SearchScreen = () => {
     const [results, setResults] = useState([]);
     const [loading, setLoading] = useState(false)
     let movieName = 'Ant-Man and the Wasp: Quantumania';
-    const handleSearch = value =>{
-        if(value && value.length>2){
+    const handleSearch = value => {
+        if (value && value.length > 2) {
             setLoading(true)
             searchMovies({
                 query: value,
                 include_adults: 'false',
                 language: 'en-US',
                 page: '1'
-            }).then(data=>{
+            }).then(data => {
                 setLoading(false)
                 //console.log('got movies:' ,data)
-                if(data && data.results) setResults(data.results)
+                if (data && data.results) setResults(data.results)
             })
-        }else{
+        } else {
             setLoading(false)
             setResults([])
         }
     }
+
 
     const handleTextDebounce = useCallback(debounce(handleSearch, 400), [])
 
@@ -49,51 +50,52 @@ const SearchScreen = () => {
                 </TouchableOpacity>
             </View>
             {
-                loading? (
+                loading ? (
                     <Loading />
-                ):
-                        results.length > 0 ? (
-                            <ScrollView
-                                showsVerticalScrollIndicator={false}
-                                contentContainerStyle={{ paddingHorizontal: 15 }}
-                                className='space-y-3'>
-                                <Text className='text-white font-semibold ml-1'>Results ({results.length})</Text>
-                                <View className='flex-row justify-between flex-wrap'>
-                                    {
-                                        results.map((item, index) => {
-                                            return (
-                                                <TouchableWithoutFeedback
-                                                    key={index}
-                                                    onPress={() => navigation.push("Movie", item)}
-                                                >
-                                                    <View className='space-y-2 mb-4'>
-                                                        <Image className='rounded-3xl'
-                                                            // source={require('../assets/images/movie2.jpg')}
-                                                            source={{uri: image185(item?.poster_path) || fallbackMoviePoster}}
-                                                            style={{ width: width * 0.44, height: height * 0.3 }}
-                                                        />
-                                                        <Text className='text-neutral-300 ml-1'>
-                                                            {
-                                                                item?.title.length > 22 ? item?.title.slice(0, 22) + '...' : item?.title
-        
-                                                            }
-                                                        </Text>
-                                                    </View>
-        
-                                                </TouchableWithoutFeedback>
-                                            )
-                                        })
-                                    }
-                                </View>
-                            </ScrollView>
-                        ) : (
-                            <View className='flex justify-center items-center'>
-                                <Image source={require('../assets/images/nomovie.webp')}
-                                    className='h-96 w-96' />
+                ) :
+                    results.length > 0 ? (
+                        <ScrollView
+                            showsVerticalScrollIndicator={false}
+                            contentContainerStyle={{ paddingHorizontal: 15 }}
+                            className='space-y-3'>
+                            <Text className='text-white font-semibold ml-1'>Results ({results.length})</Text>
+                            <View className='flex-row justify-between flex-wrap'>
+                                {
+
+                                    results.map((item, index) => {
+                                        return (
+                                            <TouchableWithoutFeedback
+                                                key={index}
+                                                onPress={() => navigation.push("Movie", item)}
+                                            >
+                                                <View className='space-y-2 mb-4'>
+                                                    <Image className='rounded-3xl'
+                                                        // source={require('../assets/images/movie2.jpg')}
+                                                        source={item?.poster_path?{ uri: image185(item?.poster_path)}: fallbackMoviePoster }
+                                                        style={{ width: width * 0.44, height: height * 0.3 }}
+                                                    />
+                                                    <Text className='text-neutral-300 ml-1'>
+                                                        {
+                                                            item?.title.length > 22 ? item?.title.slice(0, 22) + '...' : item?.title
+
+                                                        }
+                                                    </Text>
+                                                </View>
+
+                                            </TouchableWithoutFeedback>
+                                        )
+                                    })
+                                }
                             </View>
-                        )
+                        </ScrollView>
+                    ) : (
+                        <View className='flex justify-center items-center'>
+                            <Image source={require('../assets/images/nomovie.webp')}
+                                className='h-96 w-96' />
+                        </View>
+                    )
             }
-            
+
         </SafeAreaView>
 
     )

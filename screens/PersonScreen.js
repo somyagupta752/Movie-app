@@ -64,8 +64,7 @@ export default function PersonScreen() {
                                     }}>
                                     <View className='items-center rounded-full overflow-hidden h-72 w-72 border-2 border-neutral-500'>
                                         <Image
-                                            // source={require('../assets/images/cast.jpg')}
-                                            source={{ uri: image342(person?.profile_path) || fallbackPersonImage }}
+                                            source={person?.profile_path?{ uri: image342(person?.profile_path)}: fallbackPersonImage }
                                             style={{ height: height * 0.43, width: width * 0.74 }} />
 
                                     </View>

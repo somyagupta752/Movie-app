@@ -69,8 +69,7 @@ export default function MovieScreen() {
                         ) : (
                             <View>
                                 <Image
-                                    // source={require('../assets/images/movie2.jpg')}
-                                    source={{ uri: image500(movie?.poster_path) || fallbackMoviePoster }}
+                                    source={movie?.poster_path?{ uri: image500(movie?.poster_path)}: fallbackMoviePoster }
                                     style={{ width: width, height: height * 0.55 }}
                                 />
                                 {/* <LinearGradient

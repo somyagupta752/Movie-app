@@ -24,8 +24,7 @@ export default function Cast({ cast, navigation }) {
                                 className='mr-4 items-center'>
                                 <View className='overflow-hidden rounded-full h-20 w-20 items-center border border-neutral-500'>
                                     <Image className='rounded-2xl h-24 w-20'
-                                        // source={require('../assets/images/cast.jpg')}
-                                        source={{ uri: image185(person?.profile_path) || fallbackPersonImage }}
+                                        source={person?.profile_path?{ uri: image185(person?.profile_path)}: fallbackPersonImage }
                                     />
                                 </View>
                                 <Text className="text-white text-xs mt-1">

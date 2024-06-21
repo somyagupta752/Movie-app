@@ -27,9 +27,8 @@ export const image500 = path => path? `https://image.tmdb.org/t/p/w500/${path}`:
 export const image342 = path => path? `https://image.tmdb.org/t/p/w342/${path}`: null;
 export const image185 = path => path? `https://image.tmdb.org/t/p/w185/${path}`: null;
 
-export const fallbackMoviePoster = 'https://www.google.com/url?sa=i&url=https%3A%2F%2Ffilm.jessicaerin.co%2F&psig=AOvVaw0UKDYR2YF8AqryX9glvue6&ust=1718867816849000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCOjKjuGP54YDFQAAAAAdAAAAABAE'
-export const fallbackPersonImage = 'https://www.google.com/url?sa=i&url=https%3A%2F%2Ffilm.jessicaerin.co%2F&psig=AOvVaw0UKDYR2YF8AqryX9glvue6&ust=1718867816849000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCOjKjuGP54YDFQAAAAAdAAAAABAE'
-
+export const fallbackMoviePoster = require('../assets/images/movie-fallback-image.png')
+export const fallbackPersonImage = require('../assets/images/no-person.webp')
 
 const apiCall = async (endpoint, params)=>{
     const options = {

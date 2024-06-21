@@ -38,7 +38,7 @@ export default function movieList({ title, data, hideSeeAll }) {
                                 <View className='space-y-1 mr-4'>
                                     <Image
                                         //source={require('../assets/images/movie2.jpg')}
-                                        source={{uri: image185(item.poster_path) || fallbackMoviePoster}}
+                                        source={item?.poster_path ? { uri: image185(item?.poster_path) } : fallbackMoviePoster}
                                         className='rounded-3xl'
                                         style={{ width: width * 0.33, height: height * 0.22 }} />
 

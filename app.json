@@ -3,8 +3,19 @@
     "name": "movie",
     "slug": "movie",
     "version": "1.0.0",
+    "icon": "./assets/images/icon.png",
+    "splash": {
+      "image": "./assets/images/icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
     "android": {
       "package": "com.anonymous.movie"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "655ae688-9b21-4273-90cf-fa1849532867"
+      }
     }
   }
 }
