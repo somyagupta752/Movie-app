@@ -1,4 +1,4 @@
-package com.movie
+package com.anonymous.movie
 
 import android.app.Application
 import android.content.res.Configuration

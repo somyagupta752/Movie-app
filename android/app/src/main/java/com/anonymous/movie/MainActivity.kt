@@ -1,4 +1,4 @@
-package com.movie
+package com.anonymous.movie
 
 import android.os.Build
 import android.os.Bundle
